@@ -111,6 +111,29 @@ Operasi database dipisahkan ke dalam **Repository** untuk menjaga arsitektur tet
 * **Helper Methods**
 
   * Digunakan untuk reusable code
- 
+    
+## Screenshot Fitur
+
 <img width="1918" height="1056" alt="image" src="https://github.com/user-attachments/assets/e33dcffc-8e32-4039-a7eb-65c20b4fb3bf" />
 
+* Dashboard utama untuk menampilkan data total anggota, total buku, total peminjaman, dll
+
+<img width="1919" height="1059" alt="image" src="https://github.com/user-attachments/assets/415ce142-dcaa-4764-8e1a-754083d41802" />
+
+* Form tempat manajemen buku dimana terdapat fitur menambah buku dan penampilan data buku yang ada
+
+<img width="1919" height="1061" alt="image" src="https://github.com/user-attachments/assets/d8144a92-7a8e-4ec0-bb4e-134be178a445" />
+
+* Form tempat manajemen anggota dimana terdapat fitur menambah anggota dan penampilan anggota yang terdaftar
+
+<img width="1917" height="1057" alt="image" src="https://github.com/user-attachments/assets/99c4248f-e41a-4329-8832-53f718f1a618" />
+
+* Form tempat peminjaman buku
+
+<img width="1919" height="1066" alt="image" src="https://github.com/user-attachments/assets/35e10cdb-2b4a-495c-8f68-4085d24c4866" />
+
+* Form pengembalian buku
+
+<img width="1919" height="1058" alt="image" src="https://github.com/user-attachments/assets/a54a8dfc-38c7-4628-ab63-6bb6d2a457aa" />
+
+* Form tempat menampilkan riwayat laporan peminjaman dan pengembalian
