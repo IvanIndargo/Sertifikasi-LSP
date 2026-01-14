@@ -358,8 +358,8 @@ BookId → Books(BookId)
 
 | Komponen              | Deskripsi                                      |
 | --------------------- | ---------------------------------------------- |
-| Langkah Pengujian     | Admin membuka menu **Buku**                    |
-| Data Input            | Data buku                                      |
+| Langkah Pengujian     | Admin membuka menu **Kelola Buku**             |
+| Data Input            | Data Books                                     |
 | Hasil yang Diharapkan | Data buku dapat dikelola (tambah, ubah, hapus) |
 | Hasil Aktual          | Sesuai                                         |
 | Status                | **Lulus**                                      |
@@ -374,7 +374,7 @@ BookId → Books(BookId)
 | Komponen              | Deskripsi                           |
 | --------------------- | ----------------------------------- |
 | Langkah Pengujian     | Admin membuka menu **Anggota**      |
-| Data Input            | Data anggota                        |
+| Data Input            | Data Members                        |
 | Hasil yang Diharapkan | Data anggota tampil di DataGridView |
 | Hasil Aktual          | Sesuai                              |
 | Status                | **Lulus**                           |
@@ -411,14 +411,14 @@ BookId → Books(BookId)
 
 ---
 
-## Pengujian Riwayat Peminjaman
+## Pengujian Riwayat & Laporan
 
 **Test Case ID** : TC-05
-**Nama Fitur** : Riwayat Peminjaman
+**Nama Fitur** : Riwayat & Laporan
 
 | Komponen              | Deskripsi                                       |
 | --------------------- | ----------------------------------------------- |
-| Langkah Pengujian     | Admin membuka menu **Riwayat**                  |
+| Langkah Pengujian     | Admin membuka menu **Riwayat & Laporan**                  |
 | Data Input            | Data dari tabel `t_Peminjaman`                  |
 | Hasil yang Diharapkan | Data riwayat peminjaman dan pengembalian tampil |
 | Hasil Aktual          | Sesuai                                          |
