@@ -138,4 +138,113 @@ Operasi database dipisahkan ke dalam **Repository** untuk menjaga arsitektur tet
 
 * Form tempat menampilkan riwayat laporan peminjaman dan pengembalian
 
+## ER_Diagram
+<img width="1859" height="479" alt="image" src="https://github.com/user-attachments/assets/cecc2fa9-97c6-42ff-9cb1-8410cb21aff7" />
+
+## SQL Query
+
+CREATE DATABASE IF NOT EXISTS `LSP` CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+USE `LSP`;
+
+-- Drop tabel jika tabel telah digunakan
+DROP TABLE IF EXISTS `Borrowings`;
+DROP TABLE IF EXISTS `Books`;
+DROP TABLE IF EXISTS `Members`;
+
+-- Membuat tabel buku
+CREATE TABLE `Books` (
+  `BookId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `BookCode` VARCHAR(50) NOT NULL UNIQUE,
+  `Title` VARCHAR(200) NOT NULL,
+  `Author` VARCHAR(100) NOT NULL,
+  `Publisher` VARCHAR(100) NOT NULL,
+  `PublishYear` INT NOT NULL,
+  `Category` VARCHAR(50) NOT NULL,
+  `Stock` INT NOT NULL DEFAULT 0,
+  `AvailableStock` INT NOT NULL DEFAULT 0,
+  `CreatedDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Membuat tabel member
+CREATE TABLE `Members` (
+  `MemberId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `MemberCode` VARCHAR(50) NOT NULL UNIQUE,
+  `FullName` VARCHAR(100) NOT NULL,
+  `Address` VARCHAR(255) NOT NULL,
+  `PhoneNumber` VARCHAR(20) NOT NULL,
+  `Email` VARCHAR(100),
+  `JoinDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `IsActive` TINYINT(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Membuat tabel peminjaman
+CREATE TABLE `Borrowings` (
+  `BorrowingId` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `BorrowingCode` VARCHAR(50) NOT NULL UNIQUE,
+  `MemberId` INT NOT NULL,
+  `BookId` INT NOT NULL,
+  `BorrowDate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `DueDate` DATETIME NOT NULL,
+  `ReturnDate` DATETIME NULL,
+  `Fine` DECIMAL(18,2) NOT NULL DEFAULT 0,
+  `Status` VARCHAR(20) NOT NULL DEFAULT 'Dipinjam',
+  CONSTRAINT `fk_borrowings_members` FOREIGN KEY (`MemberId`) REFERENCES `Members`(`MemberId`) ON UPDATE CASCADE ON DELETE RESTRICT,
+  CONSTRAINT `fk_borrowings_books` FOREIGN KEY (`BookId`) REFERENCES `Books`(`BookId`) ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Inputan data untuk tabel buku
+INSERT INTO `Books` (`BookCode`, `Title`, `Author`, `Publisher`, `PublishYear`, `Category`, `Stock`, `AvailableStock`) VALUES
+('BK001', 'Jaringan Komputer Dasar', 'Andrew Tanenbaum', 'Network Press', 2022, 'Teknologi', 5, 5),
+('BK002', 'Keamanan Sistem Informasi', 'William Stallings', 'Security Media', 2023, 'Teknologi', 4, 4),
+('BK003', 'Pemrograman Web dengan PHP', 'Rasmus Lerdorf', 'Web Publisher', 2022, 'Teknologi', 6, 6),
+('BK004', 'Pemrograman Java Lanjutan', 'James Gosling', 'Java Press', 2023, 'Teknologi', 3, 3),
+('BK005', 'Rekayasa Perangkat Lunak', 'Ian Sommerville', 'SE Books', 2024, 'Teknologi', 5, 5),
+('BK006', 'Kecerdasan Buatan', 'Stuart Russell', 'AI Publisher', 2024, 'Teknologi', 4, 4),
+('BK007', 'Data Mining dan Big Data', 'Jiawei Han', 'Data Science Press', 2023, 'Teknologi', 3, 3),
+('BK008', 'Statistika untuk Penelitian', 'Sudjana', 'Statistik Media', 2022, 'Pendidikan', 6, 6),
+('BK009', 'Metodologi Penelitian', 'Sugiyono', 'Research Press', 2023, 'Pendidikan', 8, 8),
+('BK010', 'Pengantar Ekonomi Mikro', 'N. Gregory Mankiw', 'Economy Press', 2022, 'Ekonomi', 5, 5),
+('BK011', 'Akuntansi Dasar', 'Donald Kieso', 'Accounting Publisher', 2023, 'Ekonomi', 4, 4),
+('BK012', 'Manajemen Sumber Daya Manusia', 'Gary Dessler', 'Management Press', 2024, 'Manajemen', 6, 6);
+
+-- Inputan data untuk tabel member
+INSERT INTO `Members` (`MemberCode`, `FullName`, `Address`, `PhoneNumber`, `Email`, `IsActive`) VALUES
+('MBR001', 'Ivan Indargo', 'Jl. Merdeka No. 123, Malang', '0887368262837', 'Iindargo@email.com', 1);
+
+SET @BorrowDate = DATE_SUB(NOW(), INTERVAL 5 DAY);
+SET @DueDate = DATE_ADD(NOW(), INTERVAL 2 DAY);
+
+-- Inputan data untuk peminjaman
+INSERT INTO `Borrowings` (`BorrowingCode`, `MemberId`, `BookId`, `BorrowDate`, `DueDate`, `Status`) VALUES
+(CONCAT('BRW', DATE_FORMAT(NOW(), '%Y%m%d'), '0001'), 1, 1, @BorrowDate, @DueDate, 'Dipinjam'),
+(CONCAT('BRW', DATE_FORMAT(NOW(), '%Y%m%d'), '0002'), 2, 3, @BorrowDate, @DueDate, 'Dipinjam');
+
+-- Update stock untuk buku yang dipinjam
+UPDATE `Books` SET `AvailableStock` = `AvailableStock` - 1 WHERE `BookId` IN (1, 3);
+
+-- Pembuatan index untuk performa query lebih bagus
+CREATE INDEX `IX_Books_BookCode` ON `Books`(`BookCode`);
+CREATE INDEX `IX_Books_Title` ON `Books`(`Title`(100));
+CREATE INDEX `IX_Members_MemberCode` ON `Members`(`MemberCode`);
+CREATE INDEX `IX_Members_FullName` ON `Members`(`FullName`(100));
+CREATE INDEX `IX_Borrowings_Status` ON `Borrowings`(`Status`);
+CREATE INDEX `IX_Borrowings_BorrowDate` ON `Borrowings`(`BorrowDate`);
+
+-- Procedure untuk update status peminjaman
+Drop procedure if exists UpdateLateStatus;
+DELIMITER $$
+CREATE PROCEDURE `UpdateLateStatus`()
+BEGIN
+  UPDATE `Borrowings`
+  SET `Status` = 'Terlambat'
+  WHERE `ReturnDate` IS NULL
+    AND `DueDate` < NOW()
+    AND `Status` != 'Terlambat';
+END$$
+DELIMITER ;
+
+SELECT 'Database LSP berhasil dibuat dan diinisialisasi!' AS Info;
+SELECT 'Total Books: ' AS Label, COUNT(*) AS TotalBooks FROM `Books`;
+SELECT 'Total Members: ' AS Label, COUNT(*) AS TotalMembers FROM `Members`;
+SELECT 'Total Borrowings: ' AS Label, COUNT(*) AS TotalBorrowings FROM `Borrowings`;
 
