@@ -142,7 +142,7 @@ Operasi database dipisahkan ke dalam **Repository** untuk menjaga arsitektur tet
 <img width="1859" height="479" alt="image" src="https://github.com/user-attachments/assets/cecc2fa9-97c6-42ff-9cb1-8410cb21aff7" />
 
 ## SQL Query
-
+```Text
 CREATE DATABASE IF NOT EXISTS `LSP` CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 USE `LSP`;
 
@@ -247,8 +247,8 @@ SELECT 'Database LSP berhasil dibuat dan diinisialisasi!' AS Info;
 SELECT 'Total Books: ' AS Label, COUNT(*) AS TotalBooks FROM `Books`;
 SELECT 'Total Members: ' AS Label, COUNT(*) AS TotalMembers FROM `Members`;
 SELECT 'Total Borrowings: ' AS Label, COUNT(*) AS TotalBorrowings FROM `Borrowings`;
-
-📋 Struktur Tabel
+```
+## Struktur Tabel
 📘 Tabel Books
 
 Menyimpan data buku yang tersedia di perpustakaan.
