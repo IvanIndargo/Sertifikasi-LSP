@@ -79,6 +79,7 @@ Method memiliki nama yang sama tetapi perilakunya dapat berbeda tergantung class
 
 ### Struktur Proejct
 
+```
 LibraryManagementSystemIvan/
 │
 ├── LibraryManagementSystem/
@@ -107,7 +108,7 @@ LibraryManagementSystemIvan/
 │
 └── Database/
     └── LibraryManagementDb.sql
-
+```
 
 ## Database Management
 
