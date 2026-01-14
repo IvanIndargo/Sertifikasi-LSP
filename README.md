@@ -111,3 +111,6 @@ Operasi database dipisahkan ke dalam **Repository** untuk menjaga arsitektur tet
 * **Helper Methods**
 
   * Digunakan untuk reusable code
+ 
+<img width="1918" height="1056" alt="image" src="https://github.com/user-attachments/assets/e33dcffc-8e32-4039-a7eb-65c20b4fb3bf" />
+
