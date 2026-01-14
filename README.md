@@ -1,10 +1,10 @@
-# 📚 Library Management System
+# Library Management System
 
 Aplikasi manajemen perpustakaan ini merupakan aplikasi perpustakaan yang dirancang menggunakan program **C# WinForms** yang terhubung langsung dengan database **MySQL**. Aplikasi ini menyediakan berbagai fitur untuk manajemen perpustakaan.
 
 ---
 
-## ✨ Fitur Utama
+## Fitur Utama
 
 * **Kelola Buku**
   Kelola data buku (Kode Buku, Judul Buku, Penulis, Penerbit, Tahun Terbit, Kategori, Stok Buku)
@@ -23,7 +23,7 @@ Aplikasi manajemen perpustakaan ini merupakan aplikasi perpustakaan yang diranca
 
 ---
 
-## 🧠 Konsep yang Diterapkan
+## Konsep yang Diterapkan
 
 ### 1️⃣ Object-Oriented Programming (OOP)
 
@@ -77,7 +77,7 @@ Method memiliki nama yang sama tetapi perilakunya dapat berbeda tergantung class
 
 ---
 
-## 🗄️ Database Management
+## Database Management
 
 * **Database**: MySQL
 * Konsep yang digunakan:
@@ -90,13 +90,13 @@ Operasi database dipisahkan ke dalam **Repository** untuk menjaga arsitektur tet
 
 ---
 
-## 🧩 Data Structures
+## Data Structures
 
 * Array dan List untuk manajemen buku dan anggota
 
 ---
 
-## ⚙️ Prosedur & Function
+## Prosedur & Function
 
 * **Procedure**
 
