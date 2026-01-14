@@ -310,3 +310,154 @@ Relasi (Foreign Key):
 MemberId → Members(MemberId)
 
 BookId → Books(BookId)
+
+# TEST CASE
+## 1. Pengujian Login User
+
+**Test Case ID** : TC-01  
+**Nama Fitur** : Login User  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | 1. Jalankan aplikasi <br> 2. Klik tombol **User** pada form Login |
+| Data Input | - |
+| Hasil yang Diharapkan | Sistem menampilkan **UserForm** |
+| Hasil Aktual | Sistem menampilkan UserForm |
+| Status | **Lulus** |
+
+---
+
+## 2. Pengujian Login Admin
+
+**Test Case ID** : TC-02  
+**Nama Fitur** : Login Admin  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | 1. Jalankan aplikasi <br> 2. Klik tombol **Admin** <br> 3. Masukkan username dan password |
+| Data Input | Username & Password Admin |
+| Hasil yang Diharapkan | Sistem menampilkan **MainForm Admin** |
+| Hasil Aktual | Sistem menampilkan MainForm Admin |
+| Status | **Lulus** |
+
+---
+
+## 3. Pengujian Tampilan Katalog Buku (User)
+
+**Test Case ID** : TC-03  
+**Nama Fitur** : Katalog Buku User  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | Login sebagai User |
+| Data Input | Data dari tabel Buku |
+| Hasil yang Diharapkan | Data buku tampil pada DataGridView |
+| Hasil Aktual | Data tampil sesuai database |
+| Status | **Lulus** |
+
+---
+
+## 4. Pengujian Tambah Data Buku (Admin)
+
+**Test Case ID** : TC-04  
+**Nama Fitur** : Tambah Buku  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | 1. Login Admin <br> 2. Klik tombol Tambah Buku <br> 3. Isi data buku <br> 4. Klik Simpan |
+| Data Input | Kode Buku, Judul, Penulis, Tahun, Stok |
+| Hasil yang Diharapkan | Data buku tersimpan ke database |
+| Hasil Aktual | Data berhasil disimpan |
+| Status | **Lulus** |
+
+---
+
+## 5. Pengujian Edit Data Buku
+
+**Test Case ID** : TC-05  
+**Nama Fitur** : Edit Buku  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | Pilih buku → Edit → Simpan |
+| Data Input | Data buku baru |
+| Hasil yang Diharapkan | Data buku terupdate |
+| Hasil Aktual | Data terupdate |
+| Status | **Lulus** |
+
+---
+
+## 6. Pengujian Hapus Data Buku
+
+**Test Case ID** : TC-06  
+**Nama Fitur** : Hapus Buku  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | Pilih buku → Hapus |
+| Data Input | ID Buku |
+| Hasil yang Diharapkan | Data buku terhapus |
+| Hasil Aktual | Data terhapus |
+| Status | **Lulus** |
+
+---
+
+## 7. Pengujian Peminjaman Buku
+
+**Test Case ID** : TC-07  
+**Nama Fitur** : Peminjaman Buku  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | User memilih buku → Pinjam |
+| Data Input | ID Buku, ID User |
+| Hasil yang Diharapkan | Data peminjaman tersimpan & stok berkurang |
+| Hasil Aktual | Data tersimpan dan stok berkurang |
+| Status | **Lulus** |
+
+---
+
+## 8. Pengujian Pengembalian Buku
+
+**Test Case ID** : TC-08  
+**Nama Fitur** : Pengembalian Buku  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | User mengembalikan buku |
+| Data Input | ID Peminjaman |
+| Hasil yang Diharapkan | Status peminjaman selesai & stok bertambah |
+| Hasil Aktual | Status selesai dan stok bertambah |
+| Status | **Lulus** |
+
+---
+
+## 9. Pengujian Logout
+
+**Test Case ID** : TC-09  
+**Nama Fitur** : Logout  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | Klik tombol Logout |
+| Data Input | - |
+| Hasil yang Diharapkan | Sistem kembali ke Form Login |
+| Hasil Aktual | Sistem kembali ke Form Login |
+| Status | **Lulus** |
+
+---
+
+## 10. Pengujian Exit Aplikasi
+
+**Test Case ID** : TC-10  
+**Nama Fitur** : Exit Aplikasi  
+
+| Komponen | Deskripsi |
+|--------|-----------|
+| Langkah Pengujian | Klik tombol Exit |
+| Data Input | - |
+| Hasil yang Diharapkan | Aplikasi tertutup |
+| Hasil Aktual | Aplikasi tertutup |
+| Status | **Lulus** |
+
+---
