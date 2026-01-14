@@ -137,3 +137,5 @@ Operasi database dipisahkan ke dalam **Repository** untuk menjaga arsitektur tet
 <img width="1919" height="1058" alt="image" src="https://github.com/user-attachments/assets/a54a8dfc-38c7-4628-ab63-6bb6d2a457aa" />
 
 * Form tempat menampilkan riwayat laporan peminjaman dan pengembalian
+
+
