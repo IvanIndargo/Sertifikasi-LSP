@@ -248,3 +248,65 @@ SELECT 'Total Books: ' AS Label, COUNT(*) AS TotalBooks FROM `Books`;
 SELECT 'Total Members: ' AS Label, COUNT(*) AS TotalMembers FROM `Members`;
 SELECT 'Total Borrowings: ' AS Label, COUNT(*) AS TotalBorrowings FROM `Borrowings`;
 
+📋 Struktur Tabel
+📘 Tabel Books
+
+Menyimpan data buku yang tersedia di perpustakaan.
+
+Kolom utama:
+
+BookId → Primary Key
+
+BookCode → Kode unik buku
+
+Title, Author, Publisher
+
+PublishYear, Category
+
+Stock → Total stok buku
+
+AvailableStock → Stok tersedia
+
+CreatedDate → Tanggal input data
+
+👤 Tabel Members
+
+Menyimpan data anggota perpustakaan.
+
+Kolom utama:
+
+MemberId → Primary Key
+
+MemberCode → Kode unik anggota
+
+FullName, Address, PhoneNumber, Email
+
+JoinDate → Tanggal bergabung
+
+IsActive → Status keaktifan anggota
+
+🔄 Tabel Borrowings
+
+Menyimpan data transaksi peminjaman buku.
+
+Kolom utama:
+
+BorrowingId → Primary Key
+
+BorrowingCode → Kode transaksi
+
+MemberId → Relasi ke tabel Members
+
+BookId → Relasi ke tabel Books
+
+BorrowDate, DueDate, ReturnDate
+
+Fine → Denda keterlambatan
+
+Status → Status peminjaman (Dipinjam / Terlambat / Dikembalikan)
+
+Relasi (Foreign Key):
+
+MemberId → Members(MemberId)
+
+BookId → Books(BookId)
