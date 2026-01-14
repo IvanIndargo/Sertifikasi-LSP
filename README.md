@@ -111,7 +111,3 @@ Operasi database dipisahkan ke dalam **Repository** untuk menjaga arsitektur tet
 * **Helper Methods**
 
   * Digunakan untuk reusable code
-
----
-
-✨ *Dokumentasi ini menjelaskan struktur, fitur, dan konsep yang digunakan dalam aplikasi Library Management System.*
