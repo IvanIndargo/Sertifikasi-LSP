@@ -105,9 +105,8 @@ LibraryManagementSystemIvan/
 │   ├── App.config
 │   └── LibraryManagementSystem.csproj
 │
-├── Database/
+└── Database/
     └── LibraryManagementDb.sql
-
 
 
 ## Database Management
