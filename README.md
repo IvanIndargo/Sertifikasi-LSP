@@ -172,7 +172,7 @@ Operasi database dipisahkan ke dalam **Repository** untuk menjaga arsitektur tet
 * Form tempat menampilkan riwayat laporan peminjaman dan pengembalian
 
 ## ER_Diagram
-<img width="1859" height="479" alt="image" src="https://github.com/user-attachments/assets/cecc2fa9-97c6-42ff-9cb1-8410cb21aff7" />
+<img width="921" height="311" alt="image" src="https://github.com/user-attachments/assets/250a9f59-5b76-4096-9a8f-8e8aac92aa99" />
 
 ## SQL Query
 ```Text
